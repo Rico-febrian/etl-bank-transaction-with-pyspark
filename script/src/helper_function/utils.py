@@ -28,23 +28,43 @@ LOG_DB_PORT = os.getenv("LOG_DB_PORT")
 
 
 def source_engine():
+    """
+    This function returns the source database engine.
+    """
     SOURCE_DB_URL = f"jdbc:postgresql://{SOURCE_DB_HOST}:{SOURCE_DB_PORT}/{SOURCE_DB_NAME}"
     return SOURCE_DB_URL, SOURCE_DB_USER, SOURCE_DB_PASS 
 
 def dwh_engine():
+    """
+    This function returns the DWH database engine.
+    """
     DWH_DB_URL = f"jdbc:postgresql://{DWH_DB_HOST}:{DWH_DB_PORT}/{DWH_DB_NAME}"
     return DWH_DB_URL, DWH_DB_USER, DWH_DB_PASS 
 
 def dwh_engine_sqlalchemy():
+    """
+    This function returns the DWH database engine using sqlalchemy.
+    """
     return create_engine(f"postgresql://{DWH_DB_USER}:{DWH_DB_PASS}@{DWH_DB_HOST}:{DWH_DB_PORT}/{DWH_DB_NAME}")
 
 def log_engine():
+    """
+    This function returns the log database engine.
+    """
     LOG_DB_URL = f"jdbc:postgresql://{LOG_DB_HOST}:{LOG_DB_PORT}/{LOG_DB_NAME}"
     return LOG_DB_URL, LOG_DB_USER, LOG_DB_PASS 
 
 
 def load_log_msg(spark: SparkSession, log_msg):
+    """
+    This function loads the log message to the log database.
 
+    Args:
+        spark (SparkSession): spark session object.
+        log_msg (_type_): log message in dataframe format.
+    """
+
+    # Set log database engine
     LOG_DB_URL, LOG_DB_USER, LOG_DB_PASS = log_engine()
     table_name = "etl_log"
 
@@ -55,6 +75,7 @@ def load_log_msg(spark: SparkSession, log_msg):
         "driver": "org.postgresql.Driver" # set driver postgres
     }
 
+    # Write log message to log database
     log_msg.write.jdbc(url = LOG_DB_URL,
                   table = table_name,
                   mode = "append",
@@ -88,6 +109,15 @@ def save_to_json(dict_result: dict, filename: str) -> None:
 
 # Check Percentage of Missing Values for each column with pyspark
 def check_missing_values(df):
+    """
+    This function checks the percentage of missing values for each column in a dataframe.
+
+    Args:
+        df (_type_): Dataframe to check for missing values.
+
+    Returns:
+        int : Percentage of missing values for each column in the dataframe.
+    """
 
     total_data = df.count()
 

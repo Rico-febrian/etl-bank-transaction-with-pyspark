@@ -16,7 +16,7 @@ marital_status_df = extract_database(spark=spark, table_name="marital_status")
 marketing_campaign_deposit_df = extract_database(spark=spark, table_name="marketing_campaign_deposit")
 bank_df = extract_csv(spark=spark, file_name="new_bank_transaction.csv")
 
-
+# Create data profiling report
 data_profiling_report = {
     "person_in_charge" : "rico_febrian",
     "checking_date" : datetime.now().strftime('%d/%m/%y'),
@@ -46,5 +46,6 @@ data_profiling_report = {
     }
 }
 
+# Save data profiling report to json
 save_to_json(dict_result=data_profiling_report, filename="data_profiling_report")
 

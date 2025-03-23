@@ -5,7 +5,15 @@ from src.helper_function.utils import load_log_msg
 
 
 def transform_transactions(spark, df):
+    """
+    This function is used to transform the transactions data.
 
+    Args:
+        spark (_type_): spark session object
+        df (_type_): transactions dataframe object
+    """
+
+    # Set up current timestamp for logging
     current_timestamp = datetime.now()
 
     try:

@@ -4,7 +4,15 @@ from datetime import datetime
 from src.helper_function.utils import load_log_msg
 
 def transform_marketing_campaign(spark, df):
+    """
+    This function is used to transform the marketing_campaign_deposit table.
 
+    Args:
+        spark (_type_): spark session object
+        df (_type_): marketing_campaign_deposit dataframe object
+    """
+
+    # Set up current timestamp for logging
     current_timestamp = datetime.now()
 
     try:

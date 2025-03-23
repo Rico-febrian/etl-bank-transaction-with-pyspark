@@ -4,7 +4,15 @@ from pyspark.sql.functions import col, when, lit, to_date, date_format, year, ro
 from src.helper_function.utils import load_log_msg
 
 def transform_customers(spark, df):
+    """
+    This function is used to transform the customers table.
 
+    Args:
+        spark (_type_): spark session object
+        df (_type_): customers dataframe object
+    """
+
+    # Set up current timestamp for logging
     current_timestamp = datetime.now()
 
     try:
