@@ -3,6 +3,16 @@ from datetime import datetime
 from src.helper_function.utils import source_engine, load_log_msg
 
 def extract_database(spark: SparkSession, table_name: str):
+    """
+    This function extracts data from a selected table in source database.
+
+    Args:
+        spark (SparkSession): spark session object.
+        table_name (str): table name to extract data from.
+
+    Returns:
+        jdbc dataframe: extracted data from source database in jdbc format.
+    """
 
     # Get source db config
     SOURCE_DB_URL, SOURCE_DB_USER, SOURCE_DB_PASS = source_engine()
@@ -51,6 +61,16 @@ def extract_database(spark: SparkSession, table_name: str):
 
 
 def extract_csv(spark: SparkSession, file_name: str):
+    """
+    This function extracts data from a selected csv file.
+
+    Args:
+        spark (SparkSession): spark session object.
+        file_name (str): csv file name to extract data from.
+
+    Returns:
+        jdbc dataframe: extracted data from csv file in jdbc format.
+    """
 
     # Define csv path    
     path = "/home/jovyan/work/data/"
