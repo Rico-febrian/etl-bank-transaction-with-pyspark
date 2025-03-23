@@ -1,0 +1,71 @@
+services:
+  pyspark_exercise_w6 :
+    hostname: pyspark
+    container_name: pyspark_exw6_notebook
+    build: 
+       context: .
+       dockerfile: Dockerfile
+    image: pyspark_custom_pacmann
+    restart: on-failure
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    ports:
+      - ${SPARK_NOTEBOOK_PORT}:8888
+      - ${SPARK_JOB_PORT}:4040
+    volumes:
+      - ./script:/home/jovyan/work
+    networks:
+      - pyspark_exercise_w6_net
+
+  pyspark_exercise_w6_source_db:
+    image: postgres:latest
+    hostname: source_db
+    container_name: pyspark_exw6_source_db
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=${SOURCE_DB_NAME}
+      - POSTGRES_USER=${SOURCE_DB_USER}
+      - POSTGRES_PASSWORD=${SOURCE_DB_PASS}
+    volumes:
+      - ./init_database/source/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - ${SOURCE_DB_PORT}:5432 
+    networks:
+      - pyspark_exercise_w6_net
+
+  pyspark_exercise_w6_data_warehouse:
+    image: postgres:latest
+    hostname: data_warehouse
+    container_name: pyspark_exw6_dwh
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=${DWH_DB_NAME}
+      - POSTGRES_USER=${DWH_DB_USER}
+      - POSTGRES_PASSWORD=${DWH_DB_PASS}
+    volumes:
+      - ./init_database/warehouse/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - ${DWH_DB_PORT}:5432 
+    networks:
+      - pyspark_exercise_w6_net
+
+
+  pyspark_exercise_w6_log_db:
+    image: postgres:latest
+    hostname: data_warehouse
+    container_name: pyspark_exw6_log_db
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=${LOG_DB_NAME}
+      - POSTGRES_USER=${LOG_DB_USER}
+      - POSTGRES_PASSWORD=${LOG_DB_PASS}
+    volumes:
+      - ./init_database/log_db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - ${LOG_DB_PORT}:5432 
+    networks:
+      - pyspark_exercise_w6_net
+  
+networks:
+  pyspark_exercise_w6_net:
+    driver: bridge

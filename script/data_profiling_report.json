@@ -1,0 +1,274 @@
+{
+    "person_in_charge": "rico_febrian",
+    "checking_date": "23/03/25",
+    "Column Information": {
+        "Education Status": {
+            "count": 4,
+            "columns": [
+                "education_id",
+                "value",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "Marital Status": {
+            "count": 4,
+            "columns": [
+                "marital_id",
+                "value",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "Marketing Campaign Deposit": {
+            "count": 20,
+            "columns": [
+                "loan_data_id",
+                "age",
+                "job",
+                "marital_id",
+                "education_id",
+                "default",
+                "balance",
+                "housing",
+                "loan",
+                "contact",
+                "day",
+                "month",
+                "duration",
+                "campaign",
+                "pdays",
+                "previous",
+                "poutcome",
+                "subscribed_deposit",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "Bank Transaction": {
+            "count": 9,
+            "columns": [
+                "TransactionID",
+                "CustomerID",
+                "CustomerDOB",
+                "CustGender",
+                "CustLocation",
+                "CustAccountBalance",
+                "TransactionDate",
+                "TransactionTime",
+                "TransactionAmount (INR)"
+            ]
+        }
+    },
+    "Check Data Size": {
+        "Education Status": 4,
+        "Marital Status": 3,
+        "Marketing Campaign Deposit": 45211,
+        "Bank Transaction": 1048567
+    },
+    "Data Type For Each Column": {
+        "education status": [
+            [
+                "education_id",
+                "int"
+            ],
+            [
+                "value",
+                "string"
+            ],
+            [
+                "created_at",
+                "timestamp"
+            ],
+            [
+                "updated_at",
+                "timestamp"
+            ]
+        ],
+        "marital status": [
+            [
+                "marital_id",
+                "int"
+            ],
+            [
+                "value",
+                "string"
+            ],
+            [
+                "created_at",
+                "timestamp"
+            ],
+            [
+                "updated_at",
+                "timestamp"
+            ]
+        ],
+        "marketing campaign deposit": [
+            [
+                "loan_data_id",
+                "int"
+            ],
+            [
+                "age",
+                "int"
+            ],
+            [
+                "job",
+                "string"
+            ],
+            [
+                "marital_id",
+                "int"
+            ],
+            [
+                "education_id",
+                "int"
+            ],
+            [
+                "default",
+                "boolean"
+            ],
+            [
+                "balance",
+                "string"
+            ],
+            [
+                "housing",
+                "boolean"
+            ],
+            [
+                "loan",
+                "boolean"
+            ],
+            [
+                "contact",
+                "string"
+            ],
+            [
+                "day",
+                "int"
+            ],
+            [
+                "month",
+                "string"
+            ],
+            [
+                "duration",
+                "int"
+            ],
+            [
+                "campaign",
+                "int"
+            ],
+            [
+                "pdays",
+                "int"
+            ],
+            [
+                "previous",
+                "int"
+            ],
+            [
+                "poutcome",
+                "string"
+            ],
+            [
+                "subscribed_deposit",
+                "boolean"
+            ],
+            [
+                "created_at",
+                "timestamp"
+            ],
+            [
+                "updated_at",
+                "timestamp"
+            ]
+        ],
+        "bank transaction": [
+            [
+                "TransactionID",
+                "string"
+            ],
+            [
+                "CustomerID",
+                "string"
+            ],
+            [
+                "CustomerDOB",
+                "string"
+            ],
+            [
+                "CustGender",
+                "string"
+            ],
+            [
+                "CustLocation",
+                "string"
+            ],
+            [
+                "CustAccountBalance",
+                "string"
+            ],
+            [
+                "TransactionDate",
+                "string"
+            ],
+            [
+                "TransactionTime",
+                "string"
+            ],
+            [
+                "TransactionAmount (INR)",
+                "string"
+            ]
+        ]
+    },
+    "Check Missing Value": {
+        "education status": {
+            "education_id": 0.0,
+            "value": 0.0,
+            "created_at": 0.0,
+            "updated_at": 0.0
+        },
+        "marital status": {
+            "marital_id": 0.0,
+            "value": 0.0,
+            "created_at": 0.0,
+            "updated_at": 0.0
+        },
+        "marketing campaign deposit": {
+            "loan_data_id": 0.0,
+            "age": 0.0,
+            "job": 0.0,
+            "marital_id": 0.0,
+            "education_id": 0.0,
+            "default": 0.0,
+            "balance": 0.0,
+            "housing": 0.0,
+            "loan": 0.0,
+            "contact": 0.0,
+            "day": 0.0,
+            "month": 0.0,
+            "duration": 0.0,
+            "campaign": 0.0,
+            "pdays": 0.0,
+            "previous": 0.0,
+            "poutcome": 0.0,
+            "subscribed_deposit": 0.0,
+            "created_at": 0.0,
+            "updated_at": 0.0
+        },
+        "bank transaction": {
+            "TransactionID": 0.0,
+            "CustomerID": 0.0,
+            "CustomerDOB": 0.0,
+            "CustGender": 0.1,
+            "CustLocation": 0.01,
+            "CustAccountBalance": 0.23,
+            "TransactionDate": 0.0,
+            "TransactionTime": 0.0,
+            "TransactionAmount (INR)": 0.0
+        }
+    }
+}
