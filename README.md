@@ -36,35 +36,42 @@ Assume I have already conducted requirement gathering, and the agreed solution w
 
 ## Pipeline Design
 
-![pipeline_design]()
+![pipeline_design](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/assets/etl_with_pyspark_design.png)
 
 ## Development Process
 
 Here’s a brief summary of the steps I took to develop the ETL pipeline:
 
-1. **Extract Data**
+1. Set Up PySpark and Database
+   - Set up PySpark in Jupyter Notebook and configured the necessary databases, including the source database, data warehouse, and log database. I used [Docker Compose](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/docker-compose.yml) for this setup.
+
+2. Create Helper Functions
+   - Created functions to support the ETL pipeline, such as setting up the database engine and other utilities.
+
+3. **Extract Data**
    - Created functions to extract data from both **databases** and **CSV files**.
 
-2. **Data Profiling**
-   - Analyzed the data structure and generated **profiling reports** stored in **JSON format**.
+4. **Data Profiling**
+   - Analyzed the data structure and generated [**profiling reports**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/script/data_profiling_report.json) stored in **JSON format**.
 
-3. **Source-to-Target Mapping**
+5. **Source-to-Target Mapping**
    - Defined transformation rules to keep the data accurate and consistent. Assume these mappings were gathered during the requirements gathering with user.
 
-4. **Data Transformation**
-   - Applied transformation functions for each table based on **source-to-target mapping**.
+6. **Data Transformation**
+   - Applied transformation functions for each table based on [**source-to-target mapping**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/source-to-target-map.md).
 
-5. **Load Data**
+7. **Load Data**
    - Created functions to load transformed data into the **data warehouse**.
 
-6. **Create Pipeline and Automation**
+8. **Create Pipeline and Automation**
    - I Developed and tested functions in **Jupyter Notebook**, then organized the pipeline into structured modules, such as:
 
-     - **Helper functions**
-     - **Extract module**
-     - **Transform module**
-     - **Load module**
-     - **Profiling module**
+     - [**Helper functions**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/tree/main/script/src/helper_function)
+     - [**Extract module**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/tree/main/script/src/extract)
+     - [**Profiling module**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/tree/main/script/src/profiling)
+     - [**Transform module**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/tree/main/script/src/transform)
+     - [**Load module**](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/tree/main/script/src/load)
+       
    
    - Then finally, I created a main script to run these modules and automated the execution.
 
@@ -83,11 +90,11 @@ Here’s a brief summary of the steps I took to develop the ETL pipeline:
 
 - ETL log result in log database
 
-![etl_log]()
+![etl_log](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/assets/etl_log_result.png)
 
 - Main pipeline result
 
-![main_pipeline]()
+![main_pipeline](https://github.com/Rico-febrian/etl-bank-transaction-with-pyspark/blob/main/assets/main_pipeline_result.png)
 
 ## Final Thoughts
 
